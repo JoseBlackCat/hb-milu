@@ -1,0 +1,89 @@
+---
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+const targetDate = new Date("2024-11-27").getTime();
+
+function calculateTimeLeft(): TimeLeft {
+  const now = new Date().getTime();
+  const difference = targetDate - now;
+
+  if (difference > 0) {
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+  }
+
+  return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+}
+
+const timeLeft = calculateTimeLeft();
+---
+
+<div
+  class="flex flex-col items-center justify-center min-h-screen bg-yellow-50"
+>
+  <h1 class="text-4xl mb-8 text-blue-900 font-semibold">
+    2024년 11월 27일까지 남은 시간
+  </h1>
+  <div class="bg-white p-8 rounded-lg shadow-lg border-4 border-blue-500">
+    <div class="grid grid-cols-4 gap-8">
+      {
+        Object.entries(timeLeft).map(([interval, value]) => (
+          <div class="flex flex-col items-center">
+            <span
+              class="text-5xl font-bold text-red-600 mb-2"
+              data-countdown={interval}
+            >
+              {value}
+            </span>
+            <span class="text-lg text-gray-600">{interval}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  interface TimeLeft {
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+  }
+
+  function updateCountdown() {
+    const targetDate = new Date("2024-11-27").getTime();
+    const now = new Date().getTime();
+    const difference = targetDate - now;
+
+    if (difference > 0) {
+      const timeLeft: TimeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+
+      Object.entries(timeLeft).forEach(([interval, value]) => {
+        const element = document.querySelector(
+          `[data-countdown="${interval}"]`
+        );
+        if (element) {
+          element.textContent = value.toString();
+        }
+      });
+    }
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown(); // Initial call
+</script>
