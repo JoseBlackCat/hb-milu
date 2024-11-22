@@ -1,0 +1,125 @@
+---
+// Props del componente (puedes agregar más si es necesario)
+interface Props {
+  class?: string; // Clase opcional para personalización adicional
+}
+
+const { class: customClass } = Astro.props;
+---
+
+<div class={`crying-cat ${customClass ?? ""}`}>
+  <div class="cat">
+    <div class="ears">
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+    </div>
+    <div class="face">
+      <div class="eyes">
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+      </div>
+      <div class="tears">
+        <div class="tear left"></div>
+        <div class="tear right"></div>
+      </div>
+      <div class="mouth"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .crying-cat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Permite posicionarlo dinámicamente */
+    width: 150px;
+    height: 150px;
+  }
+
+  .cat {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: #000; /* Negro para el cuerpo */
+    border-radius: 50%; /* Cabeza redonda */
+  }
+
+  /* Orejas */
+  .ears {
+    position: absolute;
+    top: -10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .ear {
+    width: 30px;
+    height: 30px;
+    background-color: #000;
+    border-radius: 50%;
+    transform: rotate(-45deg);
+  }
+  .ear.right {
+    transform: rotate(45deg);
+  }
+
+  /* Ojos */
+  .eyes {
+    position: absolute;
+    top: 35px;
+    left: 15px;
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .eye {
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+
+  /* Lágrimas */
+  .tears {
+    position: absolute;
+    top: 55px;
+    left: 15px;
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .tear {
+    width: 5px;
+    height: 15px;
+    background-color: #00f;
+    border-radius: 50%;
+    animation: tear-drop 1s infinite;
+  }
+  .tear.right {
+    animation-delay: 0.5s;
+  }
+
+  @keyframes tear-drop {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+  }
+
+  /* Boca */
+  .mouth {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 5px;
+    background-color: #fff;
+    border-radius: 0 0 15px 15px;
+  }
+</style>

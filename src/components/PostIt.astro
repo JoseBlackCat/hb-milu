@@ -1,0 +1,50 @@
+---
+// Props que recibe el componente
+interface Props {
+  message: string;
+  class?: string; // Clase opcional para estilos personalizados
+}
+
+const { message, class: customClass } = Astro.props;
+---
+
+<div class={`post-it ${customClass ?? ""}`}>
+  <p class="message">{message}</p>
+</div>
+
+<style>
+  .post-it {
+    width: 250px;
+    height: 200px;
+    background-color: #ffe4b5; /* Color pastel tipo papel */
+    border: 2px solid #f0a500;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: absolute; /* Para posicionamiento dinámico */
+  }
+
+  .post-it::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    width: 50px;
+    height: 20px;
+    background-color: #f0a500;
+    border-radius: 5px;
+    transform: rotate(-5deg);
+  }
+
+  .message {
+    color: #4a4a4a;
+    font-family: 'Nanum Gothic', sans-serif; /* Fuente coreana elegante */
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+</style>
