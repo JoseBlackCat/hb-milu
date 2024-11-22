@@ -1,4 +1,5 @@
 ---
+import { useState } from "react";
 import PostIt from "./PostIt.astro";
 import CryingCat from "./CryingCat.astro";
 
@@ -54,19 +55,47 @@ const timeLeft = calculateTimeLeft();
     </div>
   </div>
 
-  <PostIt class="absolute top-4 right-4 z-10" message="Por ti he caído en el mundo de los k-dramas y esta cancion fue una de mis favoritas, digo, es una de mis favoritas. Espero te guste y ya falta poquito eh" />
+  <PostIt
+    class="absolute top-4 right-4 z-10"
+    message="Por ti he caído en el mundo de los k-dramas y esta cancion fue una de mis favoritas, digo, es una de mis favoritas. Espero te guste y ya falta poquito eh"
+  />
   <CryingCat class="absolute bottom-4 left-4 z-10" />
-  <p class="absolute bottom-4 left-4 z-10">Este fue mi intento de hacer un gato con codigo, salió un gato bien feo JAJAJAJAJ</p>
-  <img src="/gifs/cat.gif" alt="">
-  <img class="absolute top-0 left-0" src="/imgs/collar.png" alt="">
-  
+  <p class="absolute bottom-4 left-4 z-10">
+    Este fue mi intento de hacer un gato con codigo, salió un gato bien feo
+    JAJAJAJAJ
+  </p>
+  <img src="/gifs/cat.gif" alt="" />
+  <img class="absolute top-0 left-0" src="/imgs/collar.png" alt="" />
 </div>
 
+<!-- Botón para controlar la reproducción de audio -->
+<button
+  id="audio-button"
+  class="absolute top-80 right-4 bg-gradient-to-r from-pink-400 to-yellow-300 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-xl transition duration-300 ease-in-out text-lg font-medium tracking-wide"
+>
+  Reproducir Música
+</button>
+
 <audio id="background-audio" loop autoplay>
-  <source src="/music/cancion-escalera-al-cielo.mp3" type="audio/mpeg">
+  <source src="/music/cancion-escalera-al-cielo.mp3" type="audio/mpeg" />
 </audio>
 
 <script>
+  const audio = document.getElementById("background-audio") as HTMLAudioElement;
+  const audioButton = document.getElementById("audio-button");
+
+  if (audio && audioButton) {
+    audioButton.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        audioButton.textContent = "Pausar Música";
+      } else {
+        audio.pause();
+        audioButton.textContent = "Reproducir Música";
+      }
+    });
+  }
+
   interface TimeLeft {
     days: number;
     hours: number;
