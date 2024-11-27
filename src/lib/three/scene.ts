@@ -6,7 +6,7 @@ export class Scene3D {
   private camera: THREE.PerspectiveCamera;
   private renderer: THREE.WebGLRenderer;
   private particles: ParticleSystem;
-  private animationId: number;
+  private animationId: number = 0;
   private mousePosition: THREE.Vector2;
   private targetRotation: THREE.Vector2;
   private currentRotation: THREE.Vector2;
