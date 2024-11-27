@@ -1,0 +1,83 @@
+---
+const albums = [
+  {
+    image: "/images/albumes/apt.jpg", // Reemplaza con la ruta de tu imagen.
+    title: "APT",
+    artist: "Rose & Brunito",
+    link: "https://www.youtube.com/watch?v=ekr2nIex040&pp=ygUDYXB0" // Enlace para más detalles o reproducción.
+  },
+  {
+    image: "/images/albumes/die_with_a_smile.jpg",
+    title: "Die with a smile",
+    artist: "Brunito con la Gaga",
+    link: "https://www.youtube.com/watch?v=kPa7bsKwL-c&pp=ygUQZGllIHdpdGggYSBzbWlsZQ%3D%3D"
+  },
+  {
+    image: "/images/albumes/escalera_al_cielo_1.jpeg",
+    title: "Bo go ship da",
+    artist: "Escalera al cielo",
+    link: "https://www.youtube.com/watch?v=ZOTI95qvxrU&pp=ygUKYm9nb3NoaXBkYQ%3D%3D"
+  },
+  {
+    image: "/images/albumes/escalera_al_cielo_2.jpeg",
+    title: "Stairway to heaven",
+    artist: "😪😪😪😪😪😪😪😪😪😪",
+    link: "https://www.youtube.com/watch?v=N090LTfmULk&pp=ygUYZXNjYWxlcmEgYWwgY2llbG8gbXVzaWNh"
+  },
+  {
+    image: "/images/albumes/love_maybe.jpeg",
+    title: "Love Maybe",
+    artist: "MeloMance",
+    link: "https://www.youtube.com/watch?v=wfch4ECkeDI"
+  },
+  {
+    image: "/images/albumes/loveable.jpeg",
+    title: "Loveable",
+    artist: "SinB",
+    link: "https://www.youtube.com/watch?v=N-SsXCdhySY&pp=ygUIbG92ZWFibGU%3D"
+  },
+  {
+    image: "/images/albumes/only.jpeg",
+    title: "Only",
+    artist: "LeeHi",
+    link: "https://www.youtube.com/watch?v=EbtRPgbYVa8"
+  },
+  {
+    image: "/images/albumes/romanticSunday.jpeg",
+    title: "Romantic Sunday",
+    artist: "Car the garden",
+    link: "https://www.youtube.com/watch?v=JEcl5H7MPbM&pp=ygUPcm9tYW50aWMgc3VuZGF5"
+  },
+  {
+    image: "/images/albumes/star.jpeg",
+    title: "Star",
+    artist: "Colde",
+    link: "https://www.youtube.com/watch?v=b0EPtQFW6y8&pp=ygUKc3RhciBjb2xkZQ%3D%3D"
+  },
+];
+---
+
+<section class="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-k-blue/20 to-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 font-noto-kr">간호사의 머리를 맑게 해주는 음악</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {albums.map((album) => (
+        <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+          <!-- Imagen del álbum -->
+          <img src={album.image} alt={album.title} class="w-full h-48 object-cover rounded-md mb-4" />
+          
+          <!-- Título del álbum -->
+          <h3 class="text-xl sm:text-2xl font-semibold text-center mb-2">{album.title}</h3>
+          
+          <!-- Artista -->
+          <p class="text-gray-600 text-center text-sm sm:text-base mb-4">{album.artist}</p>
+          
+          <!-- Botón de acción -->
+          <a href={album.link} target="_blank" class="px-4 py-2 bg-k-blue text-white rounded-lg hover:bg-k-blue/80 transition">
+            Escuchar ahora
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+---
+
+<div class={`relative ${className}`}>
+  <div
+    class="absolute inset-0 border-4 sm:border-6 md:border-8 border-k-pink/20"
+  >
+  </div>
+  <div class="absolute inset-2 border-[1px] border-k-blue/30"></div>
+  <div
+    class="absolute -top-2 sm:-top-3 md:-top-4 -left-2 sm:-left-3 md:-left-4 w-4 sm:w-6 md:w-8 h-4 sm:h-6 md:h-8 border-t-4 sm:border-t-6 md:border-t-8 border-l-4 sm:border-l-6 md:border-l-8 border-k-purple"
+  >
+  </div>
+  <div
+    class="absolute -top-2 sm:-top-3 md:-top-4 -right-2 sm:-right-3 md:-right-4 w-4 sm:w-6 md:w-8 h-4 sm:h-6 md:h-8 border-t-4 sm:border-t-6 md:border-t-8 border-r-4 sm:border-r-6 md:border-r-8 border-k-purple"
+  >
+  </div>
+  <div
+    class="absolute -bottom-2 sm:-bottom-3 md:-bottom-4 -left-2 sm:-left-3 md:-left-4 w-4 sm:w-6 md:w-8 h-4 sm:h-6 md:h-8 border-b-4 sm:border-b-6 md:border-b-8 border-l-4 sm:border-l-6 md:border-l-8 border-k-purple"
+  >
+  </div>
+  <div
+    class="absolute -bottom-2 sm:-bottom-3 md:-bottom-4 -right-2 sm:-right-3 md:-right-4 w-4 sm:w-6 md:w-8 h-4 sm:h-6 md:h-8 border-b-4 sm:border-b-6 md:border-b-8 border-r-4 sm:border-r-6 md:border-r-8 border-k-purple"
+  >
+  </div>
+  <slot />
+</div>

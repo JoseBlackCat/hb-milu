@@ -4,15 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        pink: {
-          100: "#ffe4e6",
-          400: "#f472b6",
-          500: "#ec4899",
-          600: "#db2777",
-        },
+        'k-pink': '#FFB7C5',
+        'k-blue': '#8BB7F0',
+        'k-purple': '#E6B8F5',
       },
       fontFamily: {
-        sans: ["Fredoka One", "Poppins", "sans-serif"],
+        'noto-kr': ['Noto Sans KR', 'sans-serif'],
       },
     },
   },

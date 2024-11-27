@@ -1,0 +1,100 @@
+---
+import KoreanFrame from "./KoreanFrame.astro";
+
+const photos = [
+  {
+    src: "/images/nurse_1.jpg",
+    emoji: "👩‍⚕️",
+    alt: "Working with dedication",
+    description: "인플루언서 모드",
+    span: "md:col-span-2",
+    bgColor: "bg-k-pink/10",
+  },
+  {
+    src: "/images/nurse_3.jpg",
+    emoji: "🏥",
+    alt: "Caring for patients",
+    description: "순간 XD",
+    span: "md:col-span-2",
+    bgColor: "bg-k-blue/10",
+  },
+  {
+    src: "/images/nurse_2.webp",
+    emoji: "💝",
+    alt: "After work",
+    description: "왜 뒷면에 있는 표지판을 거꾸로 읽기 시작했는지 모르겠습니다.",
+    span: "md:col-span-2",
+    bgColor: "bg-k-purple/10",
+  },
+  {
+    src: "/images/nurse_4.jpg",
+    emoji: "🌟",
+    alt: "Ready for work",
+    description: "틱토커 모드",
+    span: "md:col-span-2",
+    bgColor: "bg-k-pink/10",
+  },
+  {
+    src: "/images/nurse_5.webp",
+    emoji: "🌟",
+    alt: "Ready for work",
+    description: "전설이 되다",
+    span: "md:col-span-2",
+    bgColor: "bg-k-pink/10",
+  },
+  {
+    src: "/images/nurse_8.webp",
+    emoji: "💮",
+    alt: "With colleagues",
+    description: "언젠가 당신은 수련생을 지도하고 감독하는 사람이 될 것입니다.",
+    span: "md:col-span-2",
+    bgColor: "bg-k-blue/10",
+  },
+  {
+    src: "/images/nurse_7.webp",
+    emoji: "💮",
+    alt: "With colleagues",
+    description: "독특함",
+    span: "md:col-span-4",
+    bgColor: "bg-k-blue/10",
+  },
+];
+---
+
+<section class="py-12 sm:py-16 md:py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <h2
+      class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 font-noto-kr"
+    >
+    당신의 사진 앨범
+    </h2>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto"
+    >
+      {
+        photos.map((photo) => (
+          <div
+            class={`relative group overflow-hidden rounded-2xl ${photo.span}`}
+          >
+            <KoreanFrame className="h-full">
+              <div
+                class={`aspect-square w-full h-full relative overflow-hidden ${photo.bgColor}`}
+              >
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <span class="text-5xl sm:text-6xl md:text-7xl transition-transform duration-300 group-hover:scale-110">
+                    <img src=`${photo.src}` alt="이미지 없음" />
+                  </span>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p class="absolute bottom-4 left-4 right-4 text-white text-base sm:text-lg font-noto-kr text-center">
+                    {photo.description}
+                  </p>
+                </div>
+              </div>
+            </KoreanFrame>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
